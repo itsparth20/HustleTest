@@ -3,7 +3,7 @@ package com.vo;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PatternAndMatcher {
+public class ParseURLsPatternAndMatcher {
 	private String HTML_TAG_PATTERN;
 	private String HTML_HREF_TAG_PATTERN;
 	private Matcher mTag, mLink;
@@ -11,7 +11,7 @@ public class PatternAndMatcher {
 	private Pattern checkRegex;
 	
 	//Set all values.
-	public PatternAndMatcher(String htmlTagPatter, String htmlHrefTagPattern, String numberPatter) {
+	public ParseURLsPatternAndMatcher(String htmlTagPatter, String htmlHrefTagPattern, String numberPatter) {
 		super();
 		this.HTML_TAG_PATTERN = htmlTagPatter;
 		this.HTML_HREF_TAG_PATTERN = htmlHrefTagPattern;		

@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.vo.PatternAndMatcher;
+import com.vo.ParseURLsPatternAndMatcher;
 
 public class ParseURLs {
 
@@ -34,7 +34,7 @@ public class ParseURLs {
 		String htmlHrefTagPattern = "\\s*(?i)href\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))";
 		String numberPatter = "([0-9]( |-)?)?(\\(?[0-9]{3}\\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4})";
 		
-		PatternAndMatcher patternAndMatcher = new PatternAndMatcher(htmlTagPattern, htmlHrefTagPattern, numberPatter); 
+		ParseURLsPatternAndMatcher patternAndMatcher = new ParseURLsPatternAndMatcher(htmlTagPattern, htmlHrefTagPattern, numberPatter); 
 		for (int i = 0; i < urlList.size(); i++) {			
 			try{
 				//get url from List
@@ -53,7 +53,7 @@ public class ParseURLs {
 
 	//Parse the content on the page and stores any phone number
 	//Add any parsed out links found on the page to ArralList
-	private static void extraxtNumberAndUrl(List<String> urlList, Set<String> number, BufferedReader rd, PatternAndMatcher patternAndMatcher)
+	private static void extraxtNumberAndUrl(List<String> urlList, Set<String> number, BufferedReader rd, ParseURLsPatternAndMatcher patternAndMatcher)
 			throws IOException {
 		String str;
 		Pattern checkRegex = patternAndMatcher.getCheckRegex();
@@ -62,8 +62,7 @@ public class ParseURLs {
 		Matcher mTag, mLink;
 		while ((str = rd.readLine()) != null) {
 			
-			//Extract all phone number
-			
+			//Extract all phone number			
 			Matcher regexMatcher = checkRegex.matcher(str);
 			while (regexMatcher.find()) {
 				if (regexMatcher.group().length() != 0) {							
